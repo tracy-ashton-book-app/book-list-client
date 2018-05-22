@@ -31,7 +31,7 @@ var app = app || {};
         Book.loadAll(results);
         callBack();
       })
-      .catch((err) => console.log(err))
+      .catch((err) => module.errorView.initErrorPage(err))
   }
 
   Book.loadAll = (rows) => {

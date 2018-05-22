@@ -26,6 +26,10 @@
       </article>
     </script>
 
+    <script id="error-template" type="text/x-handlebars-template">
+        <h2>Error {{status}}: {{statusText}}</h2> 
+    </script>
+
   </head>
   <body>
     <header class="clearfix">
@@ -59,6 +63,7 @@
           </ul>
         </div> -->
       </section>
+
       <section id="about" class="container">
         <header>
           Ashton and Tracy's Book App! Its so impressive and cool!
@@ -71,6 +76,11 @@
         </section>
       </section>
       <section id="error-view" class="container"></section>
+        <h1>On No! What have you DONE!?</h1>
+        <div id="error-message">
+        </div>
+      <section id="error-view" class="container"></section>
+
     </main>
     <footer>
       &copy; 2018 Tracy &amp; Ashton
