@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <title>Book App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="vendor/styles/normalize.css">
-    <link rel="stylesheet" href="vendor/styles/icons.css">
+    <link rel="stylesheet" href="vendor/styles/normalize.css" type="text/stylesheet">
+    <link rel="stylesheet" href="vendor/styles/icons.css" type="text/stylesheet">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/modules.css"> -->
+    <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
 
     <script id="book-list-template" type="text/x-handlebars-template">
-      <article class="clearfix" data-author="{{author}}">
-        <h2>{{title}}</h2>
-        <img src="{{image_url}}" alt="{{title}}">
-        <p>By: {{author}}</p>
+      <article class="clearfix book-card" data-author="{{author}}">
+        <img class="book-image" src="{{image_url}}" alt="{{title}}">
+        <div class="book-credits">
+          <h2>{{title}}</h2>
+          <p>By: {{author}}</p>
+        </div>
         <!-- <a href="#" class="details">Read on &rarr;</a> -->
         <!-- <section class="book-details"> -->
           <!-- <ul>
@@ -33,8 +35,12 @@
   </head>
   <body>
     <header class="clearfix">
-      <section>
-        <h1>Book App</h1>
+      <section class="app-header">
+        <h1 id="header-left" class="pull-left">Lab 11 - <span id=header-location>homepage</span></h1>
+        <h1 id="header-right" class="pull-right"><span id="header-method"></span>GET: <span id="header-path"></span>/api/v1/books</h1>
+        <div>
+          <img src="http://via.placeholder.com/50x50"
+        </div>
       </section>
       <nav>
         <div class="icon-menu"></div>
