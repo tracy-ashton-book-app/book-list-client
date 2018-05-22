@@ -1,16 +1,85 @@
-<!DOCTYPE <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ashton &amp Tracy's Book List</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="main.js"></script>
-</head>
-<body>
-  <h2>Hello World!</h2>
-  <script src="scripts/models/book.js"></script>
-  <script>app.book.init()</script>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Book App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="vendor/styles/normalize.css">
+    <link rel="stylesheet" href="vendor/styles/icons.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css"> -->
+    <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+
+    <script id="book-list-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}">
+        <h2>{{title}}</h2>
+        <img src="{{image_url}}" alt="{{title}}">
+        <p>By: {{author}}</p>
+        <!-- <a href="#" class="details">Read on &rarr;</a> -->
+        <!-- <section class="book-details"> -->
+          <!-- <ul>
+            <li>{{isbn}}</li>
+            <li>{{description}}</li>
+          </ul> -->
+        <!-- </section> -->
+      </article>
+    </script>
+
+  </head>
+  <body>
+    <header class="clearfix">
+      <section>
+        <h1>Book App</h1>
+      </section>
+      <nav>
+        <div class="icon-menu"></div>
+        <ul>
+          <li class="tab" data-content="books"><a href="#" class="icon-home"> Home</a></li>
+          <li class="tab" data-content="about"><a href="#" class="icon-address-book"> About</a></li>
+          <li class="tab" data-content="new-book"><a href="#" class="icon-address-book"> About</a></li>
+          <li class="tab" data-content="admin"><a href="#" class="icon-address-book"> About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="book-list" class="container book-view">
+        <!-- <div>
+          <ul id="filters">
+            <li>
+              <select id="author-filter">
+                <option value="">-- Filter by Authors --</option>
+              </select>
+            </li>
+            <li>
+              <select id="category-filter">
+                <option value="">-- Filter by Categories --</option>
+              </select>
+            </li>
+          </ul>
+        </div> -->
+      </section>
+      <section id="about" class="container">
+        <header>
+          Ashton and Tracy's Book App! Its so impressive and cool!
+        </header>
+        <section>
+          <h1>Some of our interests:</h1>
+          <ul>
+            <li>Coding</li>
+          </ul>
+        </section>
+      </section>
+    </main>
+    <footer>
+      &copy; 2018 Tracy &amp; Ashton
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="scripts/models/book.js"></script>
+    <script src="scripts/views/book-view.js"></script>
+    <script src="scripts/views/error-view.js"></script>
+    <script src="scripts/index.js"></script>
+  </body>
 </html>

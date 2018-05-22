@@ -3,24 +3,40 @@
 var app = app || {};
 
 (function(module) {
-  
-  var book = {};
 
-  book.ENV = {
+  function Book(bookDataObj) {
+    Object.keys(bookDataObj).forEach(key => this[key] = bookDataObj[key]);
+  }
+
+  Book.prototype.toHtml = function () {
+    Book.bookListTemplate = Book.bookListTemplate 
+      || Handlebars.compile($('#book-list-template').text());
+    return Book.bookListTemplate(this);
+  }
+
+  Book.all = [];
+
+  Book.ENV = {
     isProduction: /^(?!localhost|127)/.test(window.location.hostname),
     cloudApiUrl: 'https://ta-booklist.herokuapp.com',
-    localApiUrl: 'http://localhost:3000',
-    apiUrl: ''
+    localApiUrl: 'http://localhost:3000'
   }
 
-  book.ENV.setAppUrl = function() {
-    this.apiUrl = this.isProduction ? this.cloudApiUrl : this.localApiUrl;
+  Book.ENV.apiUrl = Book.ENV.isProduction ? Book.ENV.cloudApiUrl : Book.ENV.localApiUrl;
+
+  Book.fetchAll = (callBack) => {
+    $.get(`${Book.ENV.apiUrl}/api/v1/books`)
+      .then(results => {
+        Book.loadAll(results);
+        callBack();
+      })
+      .catch(console.error)
   }
 
-  book.init = function(){
-    book.ENV.setAppUrl();
-    console.log('hello world', book.ENV);
+  Book.loadAll = (rows) => {
+    rows.sort((a,b) => a.title > b.title);
+    Book.all = rows.map(book => new Book(book));
   }
 
-  module.book = book;
+  module.Book = Book;
 })(app);
