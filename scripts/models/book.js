@@ -34,8 +34,13 @@ var app = app || {};
   }
 
   Book.loadAll = (rows) => {
-    rows.sort((a,b) => a.title > b.title);
-    Book.all = rows.map(book => new Book(book));
+    Book.all = rows.sort(function(a, b) {
+      let titleA = a.title.toUpperCase(); 
+      let titleB = b.title.toUpperCase();
+      if (titleA < titleB) { return -1; }
+      if (titleA > titleB) { return 1; }
+      return 0;
+    }).map(book => new Book(book));
   }
 
   module.Book = Book;
