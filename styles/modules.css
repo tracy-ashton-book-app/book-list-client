@@ -1,0 +1,54 @@
+.app-header {
+  background-color: white;
+  height: 30px;
+  padding: 10px;
+  width: 414px;
+  font-size: .80em;
+}
+
+.books-header {
+  background-color: lightblue;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+nav li {
+  border: 1px solid black;
+  background-color: lightblue;
+  text-align: center;
+  text-decoration: none;
+}
+
+.book-card {
+  background-color: grey;
+  text-align: center;
+}
+
+.book-card img {
+  padding: 1em;
+}
+
+.book-credits {
+  color: white;
+  background-color: black;
+  text-align: left;  
+}
+
+.book-credits h2 {
+  padding: .4em;
+  margin: 0;
+}
+
+.book-credits p {
+  padding: .6em;
+  line-height: 1em;
+}
+
+footer {
+  background-color: lightblue;
+  text-align: center;
+  padding: 10px;
+}
