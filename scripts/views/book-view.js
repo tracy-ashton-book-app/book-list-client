@@ -8,7 +8,7 @@ var app = app || {};
 
   bookView.initIndexPage = () => {
     $('.container').hide();
-    Book.all.map((b) => b.toHtml()).forEach((h) => $('#book-list').append(h));
+    module.Book.all.map(b => b.toHtml()).forEach(h => module.Index.render(h));
     $('.book-view').fadeIn(500);
   }
 

@@ -9,7 +9,9 @@ var app = app || {};
   }
 
   Book.prototype.toHtml = function () {
-    return module.Index.render(this);
+    Book.bookListTemplate = Book.bookListTemplate 
+      || Handlebars.compile($('#book-list-template').text());
+    return Book.bookListTemplate(this);
   }
 
   Book.all = [];
@@ -23,7 +25,7 @@ var app = app || {};
   Book.ENV.apiUrl = Book.ENV.isProduction ? Book.ENV.cloudApiUrl : Book.ENV.localApiUrl;
 
   Book.fetchAll = (callBack) => {
-    $.get('/api/v1/books')
+    $.get(`${Book.ENV.apiUrl}/api/v1/books`)
       .then(results => {
         Book.loadAll(results);
         callBack();
