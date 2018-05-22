@@ -35,8 +35,9 @@ var app = app || {};
 
   Book.loadAll = (rows) => {
     Book.all = rows.sort(function(a, b) {
-      let titleA = a.title.toUpperCase(); 
-      let titleB = b.title.toUpperCase();
+      let titleA = a.title.toUpperCase().replace(/^THE[ ]*(.*)/,'$1'); 
+      let titleB = b.title.toUpperCase().replace(/^THE[ ]*(.*)/,'$1');
+      debugger;
       if (titleA < titleB) { return -1; }
       if (titleA > titleB) { return 1; }
       return 0;
