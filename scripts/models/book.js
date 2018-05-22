@@ -27,10 +27,11 @@ var app = app || {};
   Book.fetchAll = (callBack) => {
     $.get(`${Book.ENV.apiUrl}/api/v1/books`)
       .then(results => {
+        console.log(results);
         Book.loadAll(results);
         callBack();
       })
-      .catch(console.error)
+      .catch((err) => console.log(err))
   }
 
   Book.loadAll = (rows) => {
