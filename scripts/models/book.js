@@ -8,27 +8,32 @@ var app = app || {};
     Object.keys(bookDataObj).forEach(key => this[key] = bookDataObj[key]);
   }
 
-  Book.template = Handlebars.compile($('#book-template').text());
-
   Book.prototype.toHtml = function () {
-    return Book.template(this);
+    return module.Index.render(this);
   }
+
+  Book.all = [];
 
   Book.ENV = {
     isProduction: /^(?!localhost|127)/.test(window.location.hostname),
     cloudApiUrl: 'https://ta-booklist.herokuapp.com',
-    localApiUrl: 'http://localhost:3000',
-    apiUrl: ''
+    localApiUrl: 'http://localhost:3000'
   }
 
-  Book.ENV.setAppUrl = function() {
-    this.apiUrl = this.isProduction ? this.cloudApiUrl : this.localApiUrl;
+  Book.ENV.apiUrl = Book.ENV.isProduction ? Book.ENV.cloudApiUrl : Book.ENV.localApiUrl;
+
+  Book.fetchAll = (callBack) => {
+    $.get('/api/v1/books')
+      .then(results => {
+        Book.loadAll(results);
+        callBack();
+      })
+      .catch(console.error)
   }
 
-  Book.init = function(callback){
-    Book.ENV.setAppUrl();
-    $.get('/books')
-    if (callback) callback();
+  Book.loadAll = (rows) => {
+    rows.sort((a,b) => a.title > b.title);
+    Book.all = rows.map(book => new Book(book));
   }
 
   module.Book = Book;
