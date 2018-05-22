@@ -1,6 +1,23 @@
-main {
-  width: 480px;
-  margin: 0 auto;
+.wrapper {
+  width: 414px;
+  margin: auto;
+}
+
+nav {
+  background-color: darkgray;
+}
+
+nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+nav li {
+  border: 1px solid black;
+  width: 20%;
+  padding: 10px;
 }
 
 .pull-left {
@@ -15,106 +32,4 @@ main {
   content: "";
   display: table;
   clear: both;
-}
-
-nav {
-  background-color: darkgray;
-
-}
-.book-card {
-  background-color: grey;
-  text-align: center;
-  
-}
-.book-card img {
-  padding: 1em;
-}
-.book-credits {
-  color: white;
-  background-color: black;
-  text-align: left;  
-}
-.book-credits h2 {
-  padding: .4em;
-  margin: 0;
-}
-.book-credits p {
-  padding: .6em;
-  line-height: 1em;
-}
-.app-header {
-  height: 50px;
-  line-height: 50px;
-}
-div {
-  width: 480px; 
-  margin: 0 auto; 
-}
-
-footer {
-  width: 480px;
-  height: 80px;
-  /* float: right; */
-  margin: 0 auto;
-}
-
-
-
-nav {
-  width: 480px;
-  margin: 0 auto;
-  height: 150px;
-}
-
-
-
-
-@media only screen and (min-width:960px){
-  main {
-    width: 960px;
-  }
-  div {
-    width: 960px;
-    margin: 0 auto;
-  }
-  #a {
-    width: 960px;
-    height: 100px;
-    line-height: 100px;
-  }
-  nav {
-    float: left;
-    display: block;
-    margin: 0 auto;
-    width: 200px;
-    height: 600px;
-  }
-  #c, #d {
-    width: 380px;
-    height: 200px;
-  }
-  #c {
-    float: left;
-  }
-  #d {
-    float: left;
-  }
-  #e, #f, #g, #h {
-    width: 190px;
-    height: 250px;
-    float: left;
-  }
-  .twoColContainer {
-    width: 380px;
-    float: left;
-  }
-
-  footer {
-    width: 960px;
-  }
-  #i {
-    width: 760px;
-    height: 150px;
-    float: right;
-  }
 }
