@@ -43,4 +43,4 @@ var app = app || {};
   module.bookView = bookView;
 })(app);
 
-$(document).ready(app.Book.fetchAll(app.bookView.initIndexPage));
+// $(document).ready(app.Book.fetchAll(app.bookView.initIndexPage));

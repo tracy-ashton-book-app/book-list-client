@@ -1,18 +1,20 @@
 'use strict';
 
-page('/', ctx => app.Book.fetchAll(app.bookView.initIndexPage));
+page('/', ctx => {
+  app.Book.fetchAll(app.bookView.initIndexPage)
+});
+
 page('/about', ctx => app.Index.showOnly('#about'));
+
 page('/new-book', ctx => {
-  console.log('new-book route from roues.js just fired');
   app.Index.showOnly('#new-book');
   app.bookView.initNewBookPage();
 });
 
 page('/book/detail/:book_id', ctx => {
-  console.log(`/book/detail/${ctx.params.book_id} route taken`);
   app.Book.fetchOne(ctx, app.bookView.initBookDetail);
 });
 
-// page('*', ctx => app.Index.showOnly('#book-list'))
+page('*', ctx => app.Index.showOnly('#book-list'))
 
 page();
