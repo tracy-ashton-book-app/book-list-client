@@ -4,16 +4,16 @@ var app = app || {};
 
 (function(module) {
 
-  let Index = {};
+  var Index = {};
 
   Index.isProduction = /^(?!localhost|127)/.test(window.location.hostname);
 
   Index.ENVIRONMENT = {};
   Index.ENVIRONMENT.apiUrl = Index.isProduction ? module.Book.ENV.cloudApiUrl : module.Book.ENV.localApiUrl;
 
-  Index.showOnly = (section) => {
+  Index.showOnly = (content) => {
     $('.tab-content').hide();
-    $(`#${section}`).fadeIn();
+    $(content).fadeIn();
   };
 
   Index.render = (bookHtml) => $('#book-list').append(bookHtml);
