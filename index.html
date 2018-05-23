@@ -91,7 +91,7 @@
 
         <section id="new-book" class="container">
             <h1>Add a new book</h1>
-            <form action="#" id="new-form">
+            <form id="new-form">
               <input type="text" id="book-title" placeholder="title" required>
               <input type="text" id="book-author" placeholder="author" required>
               <input type="text" id="book-isbn" placeholder="isbn" required>
@@ -101,6 +101,14 @@
             </form>
         </section>
 
+        <section id="admin-login" class="container">
+          <h1>Admininstrator Login</h1>
+          <form id="login">
+            <input type="text" id="token" placeholder="Admin token" required>
+            <button tupe="validate">Validate</button>
+          </form>
+        </section>
+        
         <section id="error-view" class="container">
           <h1>On No! What have you DONE!?</h1>
           <div id="error-message">
