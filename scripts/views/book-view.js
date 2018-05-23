@@ -8,9 +8,8 @@ var app = app || {};
 
   bookView.initIndexPage = () => {
     $('#book-list').empty();
-    $('.container').hide();
-    app.Book.all.forEach(b => app.Index.render(b.toHtml()));
     app.Index.showOnly('#book-list');
+    app.Book.all.forEach(b => app.Index.render(b.toHtml()));
   }
 
   bookView.initBookDetail = (data) => {
@@ -18,9 +17,8 @@ var app = app || {};
     app.Book.all[i].description = data[0].description;
     app.Book.all[i].isbn = data[0].isbn;
     $('#book-list').empty();
-    $('.container').hide();
+    app.Index.showOnly('#book-list');
     app.Index.render(app.Book.all[i].toDetailHtml());
-    $('#book-list').fadeIn(500);
   }
 
   bookView.initNewBookPage = () => {
@@ -42,5 +40,3 @@ var app = app || {};
 
   module.bookView = bookView;
 })(app);
-
-// $(document).ready(app.Book.fetchAll(app.bookView.initIndexPage));
