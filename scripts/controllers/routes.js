@@ -8,8 +8,11 @@ page('/new-book', ctx => {
   app.bookView.initNewBookPage();
 });
 
-page('/book/detail/:book_id', ctx => { 
+page('/book/detail/:book_id', ctx => {
   console.log(`/book/detail/${ctx.params.book_id} route taken`);
-  app.Book.fetchOne(ctx, app.bookView.initBookDetail)
+  app.Book.fetchOne(ctx, app.bookView.initBookDetail);
 });
+
+// page('*', ctx => app.Index.showOnly('#book-list'))
+
 page();
