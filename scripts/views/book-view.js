@@ -23,7 +23,24 @@ var app = app || {};
     $('#book-list').fadeIn(500);
   }
 
+  bookView.initNewBookPage = () => {
+    $('#new-book').on('submit', (e) => {
+      e.preventDefault();
+      let newBook = new app.Book({
+        title: $('#book-title').val(),
+        author: $('#book-author').val(),
+        isbn: $('#book-isbn').val(),
+        image_url: $('#book-image-url').val(),
+        description: $('#book-description').val(),
+      })
+      document.getElementById('new-form').reset();
+      newBook.create();
+    })
+  }
+
+
+
   module.bookView = bookView;
 })(app);
 
-$(document).ready(app.Book.fetchAll(app.bookView.initIndexPage));
+// $(document).ready(app.Book.fetchAll(app.bookView.initIndexPage));

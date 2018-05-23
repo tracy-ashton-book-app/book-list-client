@@ -54,7 +54,7 @@
           <ul>
             <li class="tab" data-content="books"><a href="/" class="icon-home"> Home</a></li>
             <li class="tab" data-content="about"><a href="/about" class="icon-address-book"> About</a></li>
-            <li class="tab" data-content="new-book"><a href="#" class="icon-address-book"> New Book</a></li>
+            <li class="tab" data-content="new-book"><a href="/new-book" class="icon-address-book"> New Book</a></li>
             <li class="tab" data-content="admin"><a href="#" class="icon-address-book"> Admin</a></li>
           </ul>
         </nav>
@@ -87,6 +87,18 @@
               <li>Coding</li>
             </ul>
           </section>
+        </section>
+
+        <section id="new-book" class="container">
+            <h1>Add a new book</h1>
+            <form action="#" id="new-form">
+              <input type="text" id="book-title" placeholder="title" required>
+              <input type="text" id="book-author" placeholder="author" required>
+              <input type="text" id="book-isbn" placeholder="isbn" required>
+              <input type="text" id="book-image-url" placeholder="image url" required>
+              <textarea id="book-description" cols="30" rows="10" placeholder="description..." required></textarea>
+              <button type="submit">Submit</button>
+            </form>
         </section>
 
         <section id="error-view" class="container">

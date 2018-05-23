@@ -15,7 +15,7 @@ var app = app || {};
   }
 
   Book.prototype.toDetailHtml = function () {
-    app.Book.bookDetailTemplate = app.Book.bookDetailTemplate 
+    app.Book.bookDetailTemplate = app.Book.bookDetailTemplate
     || Handlebars.compile($('#book-detail-template').text());
     return Book.bookDetailTemplate(this);
   }
@@ -23,7 +23,8 @@ var app = app || {};
   Book.prototype.create = function(callback) {
     console.log('Book.create:',`${Book.ENV.apiUrl}/api/v1/books`);
     console.log('Book.create sending', JSON.parse(JSON.stringify(this)));
-    $.post(`${Book.ENV.apiUrl}/api/v1/books`, 
+    let ctx = {params: {book_id: null}}
+    $.post(`${Book.ENV.apiUrl}/api/v1/books`,
       {
         author: this.author,
         title: this.title,
@@ -33,9 +34,28 @@ var app = app || {};
       })
       // JSON.parse(JSON.stringify(this)))
       .then (results => {
-        console.log('back from $.post call');
-        if (callback) callback();
-      }) 
+        console.log('book id coming back from server', results);
+        ctx.params.book_id = results[0].book_id;
+        app.Book.fetchAll()})
+      .then(results => {
+        console.log('second then after fetch all', results);
+        console.log(ctx);
+        app.Book.fetchOne(ctx, app.bookView.initBookDetail);
+      })
+
+    // let ctx = {
+    //   params: {
+    //     book_id: results[0].book_id
+    //   }
+    // }
+
+    // ctx.params.book_id
+    // call app.Book.fetchOne (ctx)
+    // passing it the callback - initBookDetail
+
+
+    // if (callback) callback();
+      // })
       .catch (err => module.errorView.initErrorPage(err))
   }
   Book.all = [];
@@ -54,11 +74,11 @@ var app = app || {};
       .catch(err => console.log(err))
   }
 
-  Book.fetchAll = (callBack) => {
+  Book.fetchAll = (callback) => {
     $.get(`${Book.ENV.apiUrl}/api/v1/books`)
       .then(results => {
         Book.loadAll(results);
-        callBack();
+        if (callback) callback();
       })
       .catch((err) => module.errorView.initErrorPage(err))
   }
