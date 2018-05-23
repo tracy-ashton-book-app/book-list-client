@@ -23,6 +23,27 @@ var app = app || {};
     $('#book-list').fadeIn(500);
   }
 
+  bookView.initNewBookPage = () => {
+    $('#new-book').on('submit', () => {
+      let newBook = new app.Book({
+        title: $('#book-title').val(),
+        author: $('#book-author').val(),
+        isbn: $('#book-isbn').val(),
+        image_url: $('#book-image-url').val(),
+        description: $('#book-description').val(),
+      })
+
+      newBook.create();
+
+      app.Book.all
+      app.Book.fetchAll();
+      app.Book.fetchOne();
+      app.initBookDetail();
+    })
+  }
+
+
+
   module.bookView = bookView;
 })(app);
 
