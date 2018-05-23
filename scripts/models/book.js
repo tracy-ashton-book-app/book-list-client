@@ -19,7 +19,25 @@ var app = app || {};
     || Handlebars.compile($('#book-detail-template').text());
     return Book.bookDetailTemplate(this);
   }
-  
+
+  Book.prototype.create = function(callback) {
+    console.log('Book.create:',`${Book.ENV.apiUrl}/api/v1/books`);
+    console.log('Book.create sending', JSON.parse(JSON.stringify(this)));
+    $.post(`${Book.ENV.apiUrl}/api/v1/books`, 
+      {
+        author: this.author,
+        title: this.title,
+        isbn: this.isbn,
+        image_url: this.image_url,
+        description: this.description
+      })
+      // JSON.parse(JSON.stringify(this)))
+      .then (results => {
+        console.log('back from $.post call');
+        if (callback) callback();
+      }) 
+      .catch (err => module.errorView.initErrorPage(err))
+  }
   Book.all = [];
 
   Book.ENV = {
