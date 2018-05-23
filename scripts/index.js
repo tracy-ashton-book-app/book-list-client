@@ -12,7 +12,7 @@ var app = app || {};
   Index.ENVIRONMENT.apiUrl = Index.isProduction ? module.Book.ENV.cloudApiUrl : module.Book.ENV.localApiUrl;
 
   Index.showOnly = (content) => {
-    $('.tab-content').hide();
+    $('.container').hide();
     $(content).fadeIn();
   };
 
