@@ -13,9 +13,10 @@ var app = app || {};
   }
 
   bookView.initBookDetail = (data) => {
-    let i = app.Book.all.findIndex(b => b.book_id === data[0].book_id);
-    app.Book.all[i].description = data[0].description;
-    app.Book.all[i].isbn = data[0].isbn;
+    let {book_id, description, isbn} = data[0];
+    let i = app.Book.all.findIndex(b => b.book_id === book_id);
+    app.Book.all[i].description = description;
+    app.Book.all[i].isbn = isbn;
     $('#book-list').empty();
     app.Index.showOnly('#book-list');
     app.Index.render(app.Book.all[i].toDetailHtml());
