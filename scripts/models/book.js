@@ -9,7 +9,7 @@ var app = app || {};
   }
 
   Book.prototype.toHtml = function () {
-    Book.bookListTemplate = Book.bookListTemplate 
+    Book.bookListTemplate = Book.bookListTemplate
       || Handlebars.compile($('#book-list-template').text());
     return Book.bookListTemplate(this);
   }
@@ -43,12 +43,12 @@ var app = app || {};
         Book.loadAll(results);
         callBack();
       })
-      .catch((err) => console.log(err))
+      .catch((err) => module.errorView.initErrorPage(err))
   }
 
   Book.loadAll = (rows) => {
     Book.all = rows.sort(function(a, b) {
-      let titleA = a.title.toUpperCase().replace(/^THE[ ]*(.*)/,'$1'); 
+      let titleA = a.title.toUpperCase().replace(/^THE[ ]*(.*)/,'$1');
       let titleB = b.title.toUpperCase().replace(/^THE[ ]*(.*)/,'$1');
       if (titleA < titleB) { return -1; }
       if (titleA > titleB) { return 1; }

@@ -17,7 +17,7 @@ var app = app || {};
   };
 
   Index.render = (bookHtml) => $('#book-list').append(bookHtml);
-  
+
   module.Index = Index;
 
 })(app)
