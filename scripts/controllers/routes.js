@@ -3,6 +3,7 @@
 page('/', ctx => app.Book.fetchAll(app.bookView.initIndexPage));
 page('/about', ctx => app.Index.showOnly('#about'));
 page('/new-book', ctx => {
+  console.log('new-book route from roues.js just fired');
   app.Index.showOnly('#new-book');
   app.bookView.initNewBookPage();
 });

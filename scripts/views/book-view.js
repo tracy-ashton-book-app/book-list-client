@@ -24,7 +24,8 @@ var app = app || {};
   }
 
   bookView.initNewBookPage = () => {
-    $('#new-book').on('submit', () => {
+    $('#new-book').on('submit', (e) => {
+      e.preventDefault();
       let newBook = new app.Book({
         title: $('#book-title').val(),
         author: $('#book-author').val(),
@@ -32,13 +33,8 @@ var app = app || {};
         image_url: $('#book-image-url').val(),
         description: $('#book-description').val(),
       })
-
+      document.getElementById('new-form').reset();
       newBook.create();
-
-      app.Book.all
-      app.Book.fetchAll();
-      app.Book.fetchOne();
-      app.initBookDetail();
     })
   }
 
