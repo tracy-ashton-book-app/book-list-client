@@ -56,4 +56,22 @@ nav a {
 
 .book-card a {
   color: white;
+
+.book-credits h2 {
+  padding: .4em;
+  margin: 0;
 }
+
+.book-credits p {
+  padding: .6em;
+  line-height: 1em;
+}
+
+.admin-view {
+  display: none;
+}
+
+footer {
+  background-color: lightblue;
+  text-align: center;
+  padding: 10px;
