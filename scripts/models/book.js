@@ -51,15 +51,12 @@ var app = app || {};
       method: 'DELETE'
     })
       .then(result => {
-        console.log('result back from the book-delete route!');
-        console.log(result);
         if (callback) callback();
       })
-      .catch(err => console.error(err));
+      .catch(err => module.errorView.initErrorPage(err));
   };
 
   Book.prototype.update = function(callback) {
-    console.log('Book.update',`/api/v1/books/${this.book_id}`);
     $.ajax({
       url: `${Book.ENV.apiUrl}/api/v1/books/${this.book_id}`,
       method: 'PUT',
@@ -72,11 +69,9 @@ var app = app || {};
       }
     })
       .then(result => {
-        console.log('result from the book-update route!');
-        console.log(result);
         if (callback) callback();
       })
-      .catch(err => console.error(err));
+      .catch(err => module.errorView.initErrorPage(err));
   };
 
   Book.all = [];

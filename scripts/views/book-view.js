@@ -46,8 +46,6 @@ var app = app || {};
   }
 
   bookView.initEditBookPage = (ctx) => {
-    console.log('initEditBOokPage id',ctx.book_id);
-    // put boook details from app.Book.all(ctx.book_id)
     let i = app.Book.all.findIndex(b => b.book_id === ctx.book_id);
     let {book_id, title, author, isbn, image_url, description} = app.Book.all[i];
     app.Index.showOnly('#new-book');
@@ -72,6 +70,12 @@ var app = app || {};
       document.getElementById('new-form').reset();
       newBook.update();
     })
+  }
+
+  bookView.initDeleteConfirmation = (ctx) => {
+    let i = app.Index.getBookIdx(ctx.book_id);
+    console.log(app.Book.all[i].title);
+    app.Book.all[i].destroy();
   }
 
   module.bookView = bookView;

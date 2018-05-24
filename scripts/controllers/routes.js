@@ -6,7 +6,6 @@ page('/', ctx => {
 });
 
 page('/menu', ctx => {
-  console.log('menu path');
   app.Index.toggleMenu();
 });
 
@@ -24,7 +23,6 @@ page('/book/detail/:book_id', ctx => {
 });
 
 page('/admin', (ctx, next) => {
-  console.log('admin path');
   app.Index.toggleMenu();
   app.adminView.fetchAdminToken(ctx, next);
   // next();
@@ -46,7 +44,8 @@ page('/update-book',
 
 page('/delete-book', 
 (ctx) => {
-  console.log('delete book');
+  ctx.book_id = $('article').data('book-id');
+  app.bookView.initDeleteConfirmation(ctx);
 }
 );
 

@@ -20,6 +20,9 @@ var app = app || {};
 
   Index.render = (bookHtml) => $('#book-list').append(bookHtml);
 
+  Index.getBookIdx = (book_id) => 
+    app.Book.all.findIndex(b => b.book_id === book_id);
+
   module.Index = Index;
 
 })(app)
