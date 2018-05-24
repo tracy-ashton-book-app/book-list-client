@@ -42,22 +42,38 @@ var app = app || {};
         console.log(ctx);
         app.Book.fetchOne(ctx, app.bookView.initBookDetail);
       })
-
-    // let ctx = {
-    //   params: {
-    //     book_id: results[0].book_id
-    //   }
-    // }
-
-    // ctx.params.book_id
-    // call app.Book.fetchOne (ctx)
-    // passing it the callback - initBookDetail
-
-
-    // if (callback) callback();
-      // })
       .catch (err => module.errorView.initErrorPage(err))
   }
+
+  Book.prototype.destroy = function(callback) {
+    $.ajax({
+      url: `${Book.ENV.apiUrl}/api/v1/books/${this.book_id}`,
+      method: 'DELETE'
+    })
+      .then(result => {
+        if (callback) callback();
+      })
+      .catch(err => module.errorView.initErrorPage(err));
+  };
+
+  Book.prototype.update = function(callback) {
+    $.ajax({
+      url: `${Book.ENV.apiUrl}/api/v1/books/${this.book_id}`,
+      method: 'PUT',
+      data: {
+        author: this.author,
+        title: this.title,
+        isbn: this.isbn,
+        image_url: this.image_url,
+        description: this.description
+      }
+    })
+      .then(result => {
+        if (callback) callback();
+      })
+      .catch(err => module.errorView.initErrorPage(err));
+  };
+
   Book.all = [];
 
   Book.ENV = {

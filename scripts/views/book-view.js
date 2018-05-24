@@ -27,8 +27,13 @@ var app = app || {};
   }
 
   bookView.initNewBookPage = () => {
+    app.Index.toggleMenu();
+    app.Index.showOnly('#new-book');
+    document.getElementById('new-form').reset();
+    $('#new-book h1').text('Add book');
     $('#new-book').on('submit', (e) => {
       e.preventDefault();
+      $('#new-book').off('submit');
       let newBook = new app.Book({
         title: $('#book-title').val(),
         author: $('#book-author').val(),
@@ -36,9 +41,41 @@ var app = app || {};
         image_url: $('#book-image-url').val(),
         description: $('#book-description').val(),
       })
-      document.getElementById('new-form').reset();
       newBook.create();
     })
+  }
+
+  bookView.initEditBookPage = (ctx) => {
+    let i = app.Book.all.findIndex(b => b.book_id === ctx.book_id);
+    let {book_id, title, author, isbn, image_url, description} = app.Book.all[i];
+    app.Index.showOnly('#new-book');
+    $('#new-book h1').text('Edit book');
+    $('#book-title').val(title);
+    $('#book-author').val(author);
+    $('#book-isbn').val(isbn);
+    $('#book-image-url').val(image_url);
+    $('#book-description').val(description);
+
+    $('#new-book').on('submit', (e) => {
+      $('#new-book').off('submit');
+      e.preventDefault();
+      let newBook = new app.Book({
+        book_id: ctx.book_id,
+        title: $('#book-title').val(),
+        author: $('#book-author').val(),
+        isbn: $('#book-isbn').val(),
+        image_url: $('#book-image-url').val(),
+        description: $('#book-description').val(),
+      });
+      document.getElementById('new-form').reset();
+      newBook.update();
+    })
+  }
+
+  bookView.initDeleteConfirmation = (ctx) => {
+    let i = app.Index.getBookIdx(ctx.book_id);
+    console.log(app.Book.all[i].title);
+    app.Book.all[i].destroy();
   }
 
   module.bookView = bookView;
