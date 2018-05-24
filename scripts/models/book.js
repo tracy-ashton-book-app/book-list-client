@@ -2,7 +2,7 @@
 
 var app = app || {};
 
-(function(module) {
+(function (module) {
 
   function Book(bookDataObj) {
     Object.keys(bookDataObj).forEach(key => this[key] = bookDataObj[key]);
@@ -16,14 +16,14 @@ var app = app || {};
 
   Book.prototype.toDetailHtml = function () {
     app.Book.bookDetailTemplate = app.Book.bookDetailTemplate
-    || Handlebars.compile($('#book-detail-template').text());
+      || Handlebars.compile($('#book-detail-template').text());
     return Book.bookDetailTemplate(this);
   }
 
-  Book.prototype.create = function(callback) {
-    console.log('Book.create:',`${Book.ENV.apiUrl}/api/v1/books`);
+  Book.prototype.create = function (callback) {
+    console.log('Book.create:', `${Book.ENV.apiUrl}/api/v1/books`);
     console.log('Book.create sending', JSON.parse(JSON.stringify(this)));
-    let ctx = {params: {book_id: null}}
+    let ctx = { params: { book_id: null } }
     $.post(`${Book.ENV.apiUrl}/api/v1/books`,
       {
         author: this.author,
@@ -32,31 +32,17 @@ var app = app || {};
         image_url: this.image_url,
         description: this.description
       })
-      // JSON.parse(JSON.stringify(this)))
-      .then (results => {
+      .then(results => {
         console.log('book id coming back from server', results);
         ctx.params.book_id = results[0].book_id;
-        app.Book.fetchAll()})
+        app.Book.fetchAll()
+      })
       .then(results => {
         console.log('second then after fetch all', results);
         console.log(ctx);
         app.Book.fetchOne(ctx, app.bookView.initBookDetail);
       })
-
-    // let ctx = {
-    //   params: {
-    //     book_id: results[0].book_id
-    //   }
-    // }
-
-    // ctx.params.book_id
-    // call app.Book.fetchOne (ctx)
-    // passing it the callback - initBookDetail
-
-
-    // if (callback) callback();
-      // })
-      .catch (err => module.errorView.initErrorPage(err))
+      .catch(err => module.errorView.initErrorPage(err))
   }
   Book.all = [];
 
@@ -71,7 +57,40 @@ var app = app || {};
   Book.fetchOne = (ctx, callback) => {
     $.get(`${Book.ENV.apiUrl}/api/v1/books/${ctx.params.book_id}`)
       .then(result => callback(result))
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
+  }
+
+  Book.destroy = (ctx, callback) => {
+    $.ajax({
+      url: `${Book.ENV.apiUrl}/api/v1/books/${ctx.params.book_id}`,
+      method: 'DELETE'
+    })
+      .then(result => {
+        console.log('result back from the book-delete route!')
+        console.log(result)
+        if (callback) callback();
+      })
+      .catch(err => console.error(err))
+  }
+
+  Book.update = (ctx, callback) => {
+    $.ajax({
+      url: `${Book.ENV.apiUrl}/api/v1/books/${ctx.params.book_id}`,
+      method: 'PUT',
+      data: {
+        author: ctx.author,
+        title: ctx.title,
+        isbn: ctx.isbn,
+        image_url: ctx.image_url,
+        description: ctx.description
+      }
+    })
+      .then(result => {
+        console.log('result from the book-update route!')
+        console.log(result);
+        if (callback) callback()
+      })
+      .catch(err => console.error(err));
   }
 
   Book.fetchAll = (callback) => {
@@ -84,9 +103,9 @@ var app = app || {};
   }
 
   Book.loadAll = (rows) => {
-    Book.all = rows.sort(function(a, b) {
-      let titleA = a.title.toUpperCase().replace(/^THE[ ]*(.*)/,'$1');
-      let titleB = b.title.toUpperCase().replace(/^THE[ ]*(.*)/,'$1');
+    Book.all = rows.sort(function (a, b) {
+      let titleA = a.title.toUpperCase().replace(/^THE[ ]*(.*)/, '$1');
+      let titleB = b.title.toUpperCase().replace(/^THE[ ]*(.*)/, '$1');
       if (titleA < titleB) { return -1; }
       if (titleA > titleB) { return 1; }
       return 0;
