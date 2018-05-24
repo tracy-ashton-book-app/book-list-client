@@ -2,7 +2,7 @@
 
 var app = app || {};
 
-(function(module){
+(function (module) {
 
   var adminView = {};
 
@@ -10,11 +10,11 @@ var app = app || {};
 
   adminView.fetchAdminToken = (ctx, next) => {
     $.get(`${app.Book.ENV.apiUrl}/api/v1/admin`)
-    .then (result => {
-      ctx.adminToken = parseInt(result);
-      next();
-    })
-    .catch (console.error);
+      .then(result => {
+        ctx.adminToken = parseInt(result);
+        next();
+      })
+      .catch(console.error);
   }
 
   adminView.validateAdminToken = (ctx, next) => {
@@ -36,8 +36,8 @@ var app = app || {};
         if (token === ctx.adminToken) {
           adminView.validAdmin = true;
           localStorage.TOKEN = token;
-        } 
-        document.getElementById('login-form').reset(); 
+        }
+        document.getElementById('login-form').reset();
         page('/');
       })
     } else {
