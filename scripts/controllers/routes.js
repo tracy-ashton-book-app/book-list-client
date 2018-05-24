@@ -5,6 +5,11 @@ page('/', ctx => {
   app.Book.fetchAll(app.bookView.initIndexPage)
 });
 
+page('/book-list-client', ctx => {
+  app.Index.toggleMenu();
+  app.Book.fetchAll(app.bookView.initIndexPage)
+});
+
 page('/menu', ctx => {
   app.Index.toggleMenu();
 });
