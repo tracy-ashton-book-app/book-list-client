@@ -66,16 +66,31 @@ var app = app || {};
       method: 'DELETE'
     })
       .then(result => {
-        console.log('we just got a result back from the book-delete route!')
+        console.log('result back from the book-delete route!')
         console.log(result)
         if (callback) callback();
       })
       .catch(err => console.error(err))
+  }
 
-
-
-
-
+  Book.update = (ctx, callback) => {
+    $.ajax({
+      url: `${Book.ENV.apiUrl}/api/v1/books/${ctx.params.book_id}`,
+      method: 'PUT',
+      data: {
+        author: ctx.author,
+        title: ctx.title,
+        isbn: ctx.isbn,
+        image_url: ctx.image_url,
+        description: ctx.description
+      }
+    })
+      .then(result => {
+        console.log('result from the book-update route!')
+        console.log(result);
+        if (callback) callback()
+      })
+      .catch(err => console.error(err));
   }
 
   Book.fetchAll = (callback) => {
