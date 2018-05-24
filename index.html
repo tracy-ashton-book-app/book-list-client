@@ -55,7 +55,7 @@
             <li class="tab" data-content="books"><a href="/" class="icon-home"> Home</a></li>
             <li class="tab" data-content="about"><a href="/about" class="icon-address-book"> About</a></li>
             <li class="tab" data-content="new-book"><a href="/new-book" class="icon-address-book"> New Book</a></li>
-            <li class="tab" data-content="admin"><a href="#" class="icon-address-book"> Admin</a></li>
+            <li class="tab" data-content="admin"><a href="/admin" class="icon-address-book"> Admin</a></li>
           </ul>
         </nav>
       </header>
@@ -103,12 +103,18 @@
 
         <section id="admin-login" class="container">
           <h1>Admininstrator Login</h1>
-          <form id="login">
-            <input type="text" id="token" placeholder="Admin token" required>
-            <button tupe="validate">Validate</button>
+          <form id="login-form">
+            <input type="text" id="admin-token" placeholder="Admin token" required>
+            <button type="submit">Validate</button>
           </form>
         </section>
-        
+
+        <section id="admin-validated" class="container">
+          <h1>Administrator Login</h1>
+          <h3>Your admin status validated</h3>
+          <p>Select a book from the book list to update or delete.</p>
+        </section>
+
         <section id="error-view" class="container">
           <h1>On No! What have you DONE!?</h1>
           <div id="error-message">
@@ -125,9 +131,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.8.6/page.min.js"></script>
     <script src="scripts/views/error-view.js"></script>
+    <script src="scripts/views/book-view.js"></script>
+    <script src="scripts/views/admin-view.js"></script>
     <script src="scripts/models/book.js"></script>
     <script src="scripts/index.js"></script>
-    <script src="scripts/views/book-view.js"></script>
     <script src="scripts/controllers/routes.js"></script>
   </body>
 </html>
