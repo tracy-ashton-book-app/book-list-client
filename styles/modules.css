@@ -13,6 +13,9 @@ footer {
   justify-content: left;
   align-items: center;
 }
+.books-header img {
+  padding-right: 10px;
+}
 
 nav ul {
   display: none;
