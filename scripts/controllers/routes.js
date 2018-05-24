@@ -16,8 +16,6 @@ page('/about', ctx => {
 });
 
 page('/new-book', ctx => {
-  app.Index.toggleMenu();
-  app.Index.showOnly('#new-book');
   app.bookView.initNewBookPage();
 });
 
@@ -38,6 +36,19 @@ page('/admin', (ctx, next) => {
 
   app.adminView.initAdminPage(ctx);
 })
+
+page('/update-book', 
+  (ctx) => {
+    ctx.book_id = $('article').data('book-id');
+    app.bookView.initEditBookPage(ctx);
+  }
+);
+
+page('/delete-book', 
+(ctx) => {
+  console.log('delete book');
+}
+);
 
 page('*', ctx => app.Index.showOnly('#book-list'))
 

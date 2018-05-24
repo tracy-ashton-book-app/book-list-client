@@ -27,6 +27,9 @@ var app = app || {};
   }
 
   bookView.initNewBookPage = () => {
+    app.Index.toggleMenu();
+    app.Index.showOnly('#new-book');
+    $('#new-book h1').text('Add book');
     $('#new-book').on('submit', (e) => {
       e.preventDefault();
       let newBook = new app.Book({
@@ -41,5 +44,19 @@ var app = app || {};
     })
   }
 
+  bookView.initEditBookPage = (ctx) => {
+    console.log('initEditBOokPage id',ctx.book_id);
+    // put boook details from app.Book.all(ctx.book_id)
+    let i = app.Book.all.findIndex(b => b.book_id === ctx.book_id);
+    let {book_id, title, author, isbn, image_url, description} = app.Book.all[i];
+    app.Index.showOnly('#new-book');
+    $('#new-book h1').text('Edit book');
+    $('#book-title').val(title);
+    $('#book-author').val(author);
+    $('#book-isbn').val(isbn);
+    $('#book-image-url').val(image_url);
+    $('#book-description').val(description);
+
+  }
   module.bookView = bookView;
 })(app);
