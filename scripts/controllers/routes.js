@@ -1,12 +1,22 @@
 'use strict';
 
 page('/', ctx => {
+  app.Index.toggleMenu();
   app.Book.fetchAll(app.bookView.initIndexPage)
 });
 
-page('/about', ctx => app.Index.showOnly('#about'));
+page('/menu', ctx => {
+  console.log('menu path');
+  app.Index.toggleMenu();
+});
+
+page('/about', ctx => {
+  app.Index.toggleMenu();
+  app.Index.showOnly('#about')
+});
 
 page('/new-book', ctx => {
+  app.Index.toggleMenu();
   app.Index.showOnly('#new-book');
   app.bookView.initNewBookPage();
 });
@@ -17,6 +27,7 @@ page('/book/detail/:book_id', ctx => {
 
 page('/admin', (ctx, next) => {
   console.log('admin path');
+  app.Index.toggleMenu();
   app.adminView.fetchAdminToken(ctx, next);
   // next();
 }, (ctx, next) =>{
