@@ -17,8 +17,9 @@ footer {
 nav ul {
   display: none;
 }
+/* removed :hover handling in js now */
 
-nav:hover ul {
+nav ul {
   display: flex;
 }
 

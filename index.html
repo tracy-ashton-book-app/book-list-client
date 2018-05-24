@@ -17,7 +17,7 @@
         <img class="book-image" src="{{image_url}}" alt="{{title}}">
         <div class="book-credits">
           <h2>{{title}}</h2>
-          <p>By: {{author}} (<a href="/book/detail/{{book_id}}">More information</a>)</p>
+          <p>By: {{author}} (<a href="/book/detail/{{book_id}}">view details</a>)</p>
         </div>
       </article>
     </script>
@@ -30,9 +30,11 @@
           <p>By: {{author}}</p>
           <p>{{isbn}}</p>
           <p>{{description}}</p>
-          <a href="/">Book list</a>
-          <button type="edit" class="admin-view">Edit</button>
-          <button type="delete" class="admin-view">Delete</button>
+          <!-- <a href="/">Book list</a> -->
+          <div class="admin-view">
+            <a href="/update-book" class="icon-pencil2"></a>
+            <a href="/delete-book" class="icon-bin"></a>
+          </div>
         </div>
       </article>
 
@@ -49,12 +51,13 @@
           <h2>Books App</h2>
         </section>
         <nav>
-          <div class="icon-menu"></div>
-          <ul>
+          <!-- <div class="icon-menu"></div> -->
+          <a href="/menu" class="icon-menu"></a>
+          <ul id="top-nav-menu">
             <li class="tab" data-content="books"><a href="/" class="icon-home"> Home</a></li>
             <li class="tab" data-content="about"><a href="/about" class="icon-address-book"> About</a></li>
-            <li class="tab" data-content="new-book"><a href="/new-book" class="icon-address-book"> New Book</a></li>
-            <li class="tab" data-content="admin"><a href="/admin" class="icon-address-book"> Admin</a></li>
+            <li class="tab" data-content="new-book"><a href="/new-book" class="icon-book"> New Book</a></li>
+            <li class="tab" data-content="admin"><a href="/admin" class="icon-key"> Admin</a></li>
           </ul>
         </nav>
       </header>

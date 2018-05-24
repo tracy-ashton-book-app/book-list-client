@@ -8,6 +8,7 @@ var app = app || {};
 
   bookView.initIndexPage = () => {
     $('#book-list').empty();
+    $('#top-nav-menu').hide();
     app.Index.showOnly('#book-list');
     app.Book.all.forEach(b => app.Index.render(b.toHtml()));
   }
@@ -19,9 +20,8 @@ var app = app || {};
     app.Book.all[i].isbn = isbn;
     app.Index.showOnly('#book-list');
     $('#book-list').empty();
-    $('.admin-view').hide();
     app.Index.render(app.Book.all[i].toDetailHtml());
-    if (localStorage.TOKEN && app.adminView.validAdmin) {
+    $('.admin-view').hide();    if (localStorage.TOKEN && app.adminView.validAdmin) {
       $('.admin-view').show();
     }
   }
