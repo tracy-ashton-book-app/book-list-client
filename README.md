@@ -6,7 +6,7 @@ book-list-client
 
 ## Overview
 
-This application utilizes
+This is a full stack application where we built both the client and api server components.  Client is hosted on github pages, api server on Heroku. 
 
 
 ## Getting Started
