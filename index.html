@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Book App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="vendor/styles/normalize.css" type="text/stylesheet">
-    <link rel="stylesheet" href="vendor/styles/icons.css" type="text/stylesheet">
+
+    <link rel="stylesheet" href="styles/vendor/styles/normalize.css">
+    <link rel="stylesheet" href="styles/vendor/styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
@@ -23,8 +24,8 @@
 
     <script id="book-detail-template" type="text/x-handlebars-template">
       <article class="book-card" data-author="{{author}}" data-book-id="{{book_id}}">
-        <img class="book-image" src="{{image_url}}" alt="{{title}}">
-        <div class="book-credits">
+        <img src="{{image_url}}" alt="{{title}}">
+        <div>
           <h2>{{title}}</h2>
           <p>By: {{author}}</p>
           <p>{{isbn}}</p>
@@ -40,10 +41,10 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
+      <header class="main-header">
         <section class="books-header">
           <img src="http://via.placeholder.com/50x50">
-          <h2>books app</h2>
+          <h2>Books App</h2>
         </section>
         <nav>
           <div class="icon-menu"></div>
