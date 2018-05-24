@@ -17,9 +17,13 @@ var app = app || {};
     let i = app.Book.all.findIndex(b => b.book_id === book_id);
     app.Book.all[i].description = description;
     app.Book.all[i].isbn = isbn;
-    $('#book-list').empty();
     app.Index.showOnly('#book-list');
+    $('#book-list').empty();
+    $('.admin-view').hide();
     app.Index.render(app.Book.all[i].toDetailHtml());
+    if (localStorage.TOKEN && app.adminView.validAdmin) {
+      $('.admin-view').show();
+    }
   }
 
   bookView.initNewBookPage = () => {
