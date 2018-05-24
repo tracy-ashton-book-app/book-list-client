@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>Book App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="vendor/styles/normalize.css" type="text/stylesheet">
-    <link rel="stylesheet" href="vendor/styles/icons.css" type="text/stylesheet">
+
+    <link rel="stylesheet" href="styles/vendor/styles/normalize.css">
+    <link rel="stylesheet" href="styles/vendor/styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
 
     <script id="book-list-template" type="text/x-handlebars-template">
-      <article class="clearfix book-card" data-author="{{author}}" data-book-id="{{book_id}}">
+      <article class="book-card" data-author="{{author}}" data-book-id="{{book_id}}">
         <img class="book-image" src="{{image_url}}" alt="{{title}}">
         <div class="book-credits">
           <h2>{{title}}</h2>
@@ -22,9 +23,9 @@
     </script>
 
     <script id="book-detail-template" type="text/x-handlebars-template">
-      <article class="clearfix book-card" data-author="{{author}}" data-book-id="{{book_id}}">
-        <img class="book-image" src="{{image_url}}" alt="{{title}}">
-        <div class="book-credits">
+      <article class="book-card" data-author="{{author}}" data-book-id="{{book_id}}">
+        <img src="{{image_url}}" alt="{{title}}">
+        <div>
           <h2>{{title}}</h2>
           <p>By: {{author}}</p>
           <p>{{isbn}}</p>
@@ -42,14 +43,10 @@
   </head>
   <body>
     <div class="wrapper">
-      <header class="clearfix">
-        <section class="app-header">
-          <h1 id="header-left" class="pull-left">Lab 11 - <span id=header-location>homepage</span></h1>
-          <h1 id="header-right" class="pull-right"><span id="header-method"></span>GET: <span id="header-path"></span>/api/v1/books</h1>
-        </section>
+      <header class="main-header">
         <section class="books-header">
           <img src="http://via.placeholder.com/50x50">
-          <h2>books app</h2>
+          <h2>Books App</h2>
         </section>
         <nav>
           <div class="icon-menu"></div>
@@ -63,20 +60,6 @@
       </header>
       <main>
         <section id="book-list" class="container book-view">
-          <!-- <div>
-            <ul id="filters">
-              <li>
-                <select id="author-filter">
-                  <option value="">-- Filter by Authors --</option>
-                </select>
-              </li>
-              <li>
-                <select id="category-filter">
-                  <option value="">-- Filter by Categories --</option>
-                </select>
-              </li>
-            </ul>
-          </div> -->
         </section>
 
         <section id="about" class="container">
