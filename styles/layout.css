@@ -3,10 +3,6 @@
   margin: auto;
 }
 
-nav {
-  background-color: darkgray;
-}
-
 nav ul {
   width: 100%;
   display: flex;
@@ -20,16 +16,17 @@ nav li {
   padding: 10px;
 }
 
-.pull-left {
-  float: left;
+form {
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-content: center;
 }
 
-.pull-right {
-  float: right;
-}
-
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
+form input,
+form textarea {
+  width: 80%;
+  margin: 5px;
+  border: 1px solid black;
 }
