@@ -4,34 +4,37 @@
     <meta charset="UTF-8">
     <title>Book App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="vendor/styles/normalize.css" type="text/stylesheet">
-    <link rel="stylesheet" href="vendor/styles/icons.css" type="text/stylesheet">
+
+    <link rel="stylesheet" href="styles/vendor/styles/normalize.css">
+    <link rel="stylesheet" href="styles/vendor/styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
 
     <script id="book-list-template" type="text/x-handlebars-template">
-      <article class="clearfix book-card" data-author="{{author}}" data-book-id="{{book_id}}">
+      <article class="book-card" data-author="{{author}}" data-book-id="{{book_id}}">
         <img class="book-image" src="{{image_url}}" alt="{{title}}">
         <div class="book-credits">
           <h2>{{title}}</h2>
-          <p>By: {{author}} (<a href="/book/detail/{{book_id}}">More information</a>)</p>
+          <p>By: {{author}} (<a href="/book/detail/{{book_id}}">view details</a>)</p>
         </div>
       </article>
     </script>
 
     <script id="book-detail-template" type="text/x-handlebars-template">
-      <article class="clearfix book-card" data-author="{{author}}" data-book-id="{{book_id}}">
-        <img class="book-image" src="{{image_url}}" alt="{{title}}">
-        <div class="book-credits">
+      <article class="book-card" data-author="{{author}}" data-book-id="{{book_id}}">
+        <img src="{{image_url}}" alt="{{title}}">
+        <div>
           <h2>{{title}}</h2>
           <p>By: {{author}}</p>
           <p>{{isbn}}</p>
           <p>{{description}}</p>
-          <a href="/">Book list</a>
-          <button type="edit" class="admin-view">Edit</button>
-          <button type="delete" class="admin-view">Delete</button>
+          <!-- <a href="/">Book list</a> -->
+          <div class="admin-view">
+            <a href="/update-book" class="icon-pencil2"></a>
+            <a href="/delete-book" class="icon-bin"></a>
+          </div>
         </div>
       </article>
 
@@ -42,41 +45,24 @@
   </head>
   <body>
     <div class="wrapper">
-      <header class="clearfix">
-        <section class="app-header">
-          <h1 id="header-left" class="pull-left">Lab 11 - <span id=header-location>homepage</span></h1>
-          <h1 id="header-right" class="pull-right"><span id="header-method"></span>GET: <span id="header-path"></span>/api/v1/books</h1>
-        </section>
+      <header class="main-header">
         <section class="books-header">
           <img src="http://via.placeholder.com/50x50">
-          <h2>books app</h2>
+          <h2>Books App</h2>
         </section>
         <nav>
-          <div class="icon-menu"></div>
-          <ul>
+          <!-- <div class="icon-menu"></div> -->
+          <a href="/menu" class="icon-menu"></a>
+          <ul id="top-nav-menu">
             <li class="tab" data-content="books"><a href="/" class="icon-home"> Home</a></li>
             <li class="tab" data-content="about"><a href="/about" class="icon-address-book"> About</a></li>
-            <li class="tab" data-content="new-book"><a href="/new-book" class="icon-address-book"> New Book</a></li>
-            <li class="tab" data-content="admin"><a href="/admin" class="icon-address-book"> Admin</a></li>
+            <li class="tab" data-content="new-book"><a href="/new-book" class="icon-book"> New Book</a></li>
+            <li class="tab" data-content="admin"><a href="/admin" class="icon-key"> Admin</a></li>
           </ul>
         </nav>
       </header>
       <main>
         <section id="book-list" class="container book-view">
-          <!-- <div>
-            <ul id="filters">
-              <li>
-                <select id="author-filter">
-                  <option value="">-- Filter by Authors --</option>
-                </select>
-              </li>
-              <li>
-                <select id="category-filter">
-                  <option value="">-- Filter by Categories --</option>
-                </select>
-              </li>
-            </ul>
-          </div> -->
         </section>
 
         <section id="about" class="container">
