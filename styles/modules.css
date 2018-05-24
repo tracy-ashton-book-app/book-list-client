@@ -47,6 +47,10 @@ nav li {
   line-height: 1em;
 }
 
+.admin-view {
+  display: none;
+}
+
 footer {
   background-color: lightblue;
   text-align: center;
