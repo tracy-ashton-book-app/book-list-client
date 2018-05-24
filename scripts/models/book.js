@@ -59,6 +59,7 @@ var app = app || {};
   };
 
   Book.prototype.update = function(callback) {
+    console.log('Book.update',`/api/v1/books/${this.book_id}`);
     $.ajax({
       url: `${Book.ENV.apiUrl}/api/v1/books/${this.book_id}`,
       method: 'PUT',
