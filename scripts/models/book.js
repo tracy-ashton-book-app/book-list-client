@@ -21,8 +21,6 @@ var app = app || {};
   }
 
   Book.prototype.create = function(callback) {
-    console.log('Book.create:',`${Book.ENV.apiUrl}/api/v1/books`);
-    console.log('Book.create sending', JSON.parse(JSON.stringify(this)));
     let ctx = {params: {book_id: null}}
     $.post(`${Book.ENV.apiUrl}/api/v1/books`,
       {
@@ -32,16 +30,9 @@ var app = app || {};
         image_url: this.image_url,
         description: this.description
       })
-      // JSON.parse(JSON.stringify(this)))
       .then (results => {
-        console.log('book id coming back from server', results);
         ctx.params.book_id = results[0].book_id;
-        app.Book.fetchAll()})
-      .then(results => {
-        console.log('second then after fetch all', results);
-        console.log(ctx);
-        app.Book.fetchOne(ctx, app.bookView.initBookDetail);
-      })
+        app.Book.fetchAll(()=>page(`/book/detail/${ctx.params.book_id}`))})
       .catch (err => module.errorView.initErrorPage(err))
   }
 
@@ -87,7 +78,7 @@ var app = app || {};
   Book.fetchOne = (ctx, callback) => {
     $.get(`${Book.ENV.apiUrl}/api/v1/books/${ctx.params.book_id}`)
       .then(result => callback(result))
-      .catch(err => console.log(err))
+      .catch(console.error)
   }
 
   Book.fetchAll = (callback) => {

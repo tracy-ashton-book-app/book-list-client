@@ -59,9 +59,13 @@
 }
 .icon-cross:before {
   content: "\ea0f";
+  color: red;
+  font-size: 2em;
 }
 .icon-checkmark:before {
   content: "\ea10";
+  color: green;
+  font-size: 2em;
 }
 .icon-facebook2:before {
   content: "\ea91";
