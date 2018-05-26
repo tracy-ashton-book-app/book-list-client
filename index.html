@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Book App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="styles/vendor/styles/normalize.css">
-    <link rel="stylesheet" href="styles/vendor/styles/icons.css">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/modules.css">
-    <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+<head>
+  <meta charset="UTF-8">
+  <title>Book App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script id="book-list-template" type="text/x-handlebars-template">
+  <link rel="stylesheet" href="styles/vendor/styles/normalize.css">
+  <link rel="stylesheet" href="styles/vendor/styles/icons.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/modules.css">
+  <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+
+  <script id="book-list-template" type="text/x-handlebars-template">
       <article class="book-card" data-author="{{author}}" data-book-id="{{book_id}}">
         <img class="book-image" src="{{image_url}}" alt="{{title}}">
         <div class="book-credits">
@@ -22,7 +23,7 @@
       </article>
     </script>
 
-    <script id="book-detail-template" type="text/x-handlebars-template">
+  <script id="book-detail-template" type="text/x-handlebars-template">
       <article class="book-card" data-author="{{author}}" data-book-id="{{book_id}}">
         <img src="{{image_url}}" alt="{{title}}">
         <div>
@@ -42,22 +43,32 @@
         <h2>Error {{status}}: {{statusText}}</h2> 
     </script>
 
-  </head>
-  <body>
-    <div class="wrapper">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="wrap">
       <header class="main-header">
         <section class="books-header">
-            <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4d6.png?v8" width="60"/>
+          <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4d6.png?v8" width="60" />
           <h2>Books App</h2>
         </section>
         <nav>
           <!-- <div class="icon-menu"></div> -->
           <a href="/menu" class="icon-menu"></a>
           <ul id="top-nav-menu">
-            <li class="tab" data-content="books"><a href="/" class="icon-home"> Home</a></li>
-            <li class="tab" data-content="about"><a href="/about" class="icon-address-book"> About</a></li>
-            <li class="tab" data-content="new-book"><a href="/new-book" class="icon-book"> New Book</a></li>
-            <li class="tab" data-content="admin"><a href="/admin" class="icon-key"> Admin</a></li>
+            <li class="tab" data-content="books">
+              <a href="/" class="icon-home"> Home</a>
+            </li>
+            <li class="tab" data-content="about">
+              <a href="/about" class="icon-address-book"> About</a>
+            </li>
+            <li class="tab" data-content="new-book">
+              <a href="/new-book" class="icon-book"> New Book</a>
+            </li>
+            <li class="tab" data-content="admin">
+              <a href="/admin" class="icon-key"> Admin</a>
+            </li>
           </ul>
         </nav>
       </header>
@@ -66,27 +77,42 @@
         </section>
 
         <section id="about" class="container">
-          <header>
-            Ashton and Tracy's Book App! Its so impressive and cool!
-          </header>
-          <section>
-            <h1>Some of our interests:</h1>
-            <ul>
-              <li>Coding</li>
-            </ul>
-          </section>
+          <h1>Ashton and Tracy's Book App! Its so impressive and cool!</h1>
+          <div class="developer">
+              <div class="text">
+                <h2>Tracy Williams</h2>
+                <img src="img/about-us/ashtonellis.jpeg">
+                <p></p>
+                <p>
+                  <a href="mailto:ashtonkellis@gmail.com">ashtonkellis@gmail.com</a> |
+                  <a href="https://github.com/ashtonkellis" target="_blank"> github.com/ashtonkellis</a>
+                </p>
+              </div>
+            </div>
+          <div class="developer">
+            <div class="text">
+              <img src="img/ashtonellis.jpeg">
+              <h2>Ashton Ellis</h2>
+              <p>My name is Ashton, and I am a JavaScript developer with a background in Health Physics. I like books. Especially Dune. I also like it when people hack their books into our app. I'm looking at you Michelle...</p>
+              <p>
+                <a href="mailto:ashtonkellis@gmail.com">ashtonkellis@gmail.com</a> |
+                <a href="https://github.com/ashtonkellis" target="_blank"> github.com/ashtonkellis</a>
+              </p>
+            </div>
+          </div>
+
         </section>
 
         <section id="new-book" class="container">
-            <h1>Add a new book</h1>
-            <form id="new-form">
-              <input type="text" id="book-title" placeholder="title" required>
-              <input type="text" id="book-author" placeholder="author" required>
-              <input type="text" id="book-isbn" placeholder="isbn" required>
-              <input type="text" id="book-image-url" placeholder="image url" required>
-              <textarea id="book-description" cols="30" rows="10" placeholder="description..." required></textarea>
-              <button type="submit">Submit</button>
-            </form>
+          <h1>Add a new book</h1>
+          <form id="new-form">
+            <input type="text" id="book-title" placeholder="title" required>
+            <input type="text" id="book-author" placeholder="author" required>
+            <input type="text" id="book-isbn" placeholder="isbn" required>
+            <input type="text" id="book-image-url" placeholder="image url" required>
+            <textarea id="book-description" cols="30" rows="10" placeholder="description..." required></textarea>
+            <button type="submit">Submit</button>
+          </form>
         </section>
 
         <section id="admin-login" class="container">
@@ -118,20 +144,23 @@
             <h2>Eroor: 500 - Error message that i cnat remember</h2>
           </div>
         </section>
-
       </main>
-      <footer>
-        &copy; 2018 Tracy &amp; Ashton
-      </footer>
-    </div><!-- end of wrapper div -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.8.6/page.min.js"></script>
-    <script src="scripts/views/error-view.js"></script>
-    <script src="scripts/views/book-view.js"></script>
-    <script src="scripts/views/admin-view.js"></script>
-    <script src="scripts/models/book.js"></script>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/controllers/routes.js"></script>
-  </body>
+    </div>
+    <!-- end of wrap div (for sticky footer)   -->
+    <footer>
+      &copy; 2018 Tracy &amp; Ashton
+    </footer>
+  </div>
+  <!-- end of wrapper div -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.8.6/page.min.js"></script>
+  <script src="scripts/views/error-view.js"></script>
+  <script src="scripts/views/book-view.js"></script>
+  <script src="scripts/views/admin-view.js"></script>
+  <script src="scripts/models/book.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/controllers/routes.js"></script>
+</body>
+
 </html>
