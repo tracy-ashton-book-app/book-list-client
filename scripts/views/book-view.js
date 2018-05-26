@@ -41,7 +41,7 @@ var app = app || {};
         image_url: $('#book-image-url').val(),
         description: $('#book-description').val(),
       })
-      newBook.create();
+      newBook.create(()=>page(`/book/detail/${ctx.book_id}`));
     })
   }
 
@@ -68,14 +68,25 @@ var app = app || {};
         description: $('#book-description').val(),
       });
       document.getElementById('new-form').reset();
-      newBook.update();
+      newBook.update(()=>page(`/book/detail/${ctx.book_id}`));
     })
   }
 
   bookView.initDeleteConfirmation = (ctx) => {
     let i = app.Index.getBookIdx(ctx.book_id);
-    console.log(app.Book.all[i].title);
-    app.Book.all[i].destroy();
+    app.Index.showOnly('#delete-confirmation');
+    $('#delete-confirmation h2').text(app.Book.all[i].title);
+    $('#delete-confirmation-form').off('click');
+    $('#delete-confirmation-form').on('click',
+      (e) => {
+        e.preventDefault();
+        if (e.target.id === 'delete-canceled') {
+          page('/');
+        } else {
+          app.Book.all[i].destroy(()=>page('/'));
+        }
+      }
+    );
   }
 
   module.bookView = bookView;

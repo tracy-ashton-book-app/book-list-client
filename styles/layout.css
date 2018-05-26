@@ -30,3 +30,7 @@ form textarea {
   margin: 5px;
   border: 1px solid black;
 }
+
+#delete-confirmation p, #delete-confirmation h2 {
+  text-align: center;
+}
