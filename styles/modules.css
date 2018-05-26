@@ -60,6 +60,7 @@ nav a {
 
 .book-card a {
   color: white;
+}
 
 .book-credits h2 {
   padding: .4em;
@@ -85,7 +86,35 @@ nav a {
   font-size: 2em;
 }
 
+/* ABOUT US PAGE */
+#about {
+  text-align: center;
+  background-color: grey;
+}
+
+#about h1 {
+  margin: 0;
+}
+
+/* DEVELOPER CARDS */
+.developer {
+  border: 1px solid black;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
+.developer a {
+  color: white;
+}
+
+.developer img {
+  width: 80%;
+}
+
 footer {
   background-color: lightblue;
   text-align: center;
   padding: 10px;
+}

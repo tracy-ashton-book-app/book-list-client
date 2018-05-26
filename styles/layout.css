@@ -3,6 +3,10 @@
   margin: auto;
 }
 
+.wrap {
+  min-height: calc(100vh - 28px);
+}
+
 nav ul {
   width: 100%;
   display: flex;
