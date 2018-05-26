@@ -75,6 +75,16 @@ nav a {
   display: none;
 }
 
+.icon-cross:before {
+  color: red;
+  font-size: 2em;
+}
+
+.icon-checkmark:before {
+  color: green;
+  font-size: 2em;
+}
+
 footer {
   background-color: lightblue;
   text-align: center;
